@@ -13,12 +13,12 @@ RUN apt-get update && \
       wget apt-transport-https git unzip \
       build-essential libtool libtool-bin gdb \
       automake autoconf bison flex python sudo vim \
-      curl software-properties-common \
+      curl software-properties-common cmake gcc g++ \
       python3 python3-pip libssl-dev pkg-config \
       libsqlite3-0 libsqlite3-dev apt-utils locales \
       python-pip-whl libleveldb-dev python3-setuptools \
-      python3-dev pandoc python3-venv \
-      libgmp-dev libbz2-dev libreadline-dev libsecp256k1-dev locales-all
+      python3-dev pandoc python3-venv libjpeg-dev zlib1g-dev \
+      libgmp-dev libbz2-dev libreadline-dev libsecp256k1-dev locales-all libffi-dev
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get -yy install nodejs
 RUN locale-gen en_US.UTF-8
@@ -83,17 +83,17 @@ COPY --chown=test:test ./docker-setup/sFuzz /home/test/tools/sFuzz
 RUN /home/test/tools/sFuzz/install_sFuzz.sh
 
 # Install manticore
-COPY --chown=test:test ./docker-setup/manticore/ /home/test/tools/manticore
-RUN /home/test/tools/manticore/install_manticore.sh
-ENV PATH /home/test/.local/bin:$PATH
-ENV LD_LIBRARY_PATH=/usr/local/lib PREFIX=/usr/local HOST_OS=Linux
+#COPY --chown=test:test ./docker-setup/manticore/ /home/test/tools/manticore
+#RUN /home/test/tools/manticore/install_manticore.sh
+#ENV PATH /home/test/.local/bin:$PATH
+#ENV LD_LIBRARY_PATH=/usr/local/lib PREFIX=/usr/local HOST_OS=Linux
 
 # Install mythril
-COPY --chown=test:test ./docker-setup/mythril/ /home/test/tools/mythril
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.en
-ENV LC_ALL en_US.UTF-8
-RUN /home/test/tools/mythril/install_mythril.sh
+#COPY --chown=test:test ./docker-setup/mythril/ /home/test/tools/mythril
+#ENV LANG en_US.UTF-8
+#ENV LANGUAGE en_US.en
+#ENV LC_ALL en_US.UTF-8
+#RUN /home/test/tools/mythril/install_mythril.sh
 
 # Install Smartian
 RUN cd /home/test/tools/ && \
