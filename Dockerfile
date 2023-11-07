@@ -41,7 +41,8 @@ WORKDIR /root
 
 # Install nodejs truffle web3 ganache-cli
 RUN npm -g config set user root
-RUN npm install -g truffle web3 ganache-cli
+RUN npm config set registry http://registry.npmjs.org/ --global
+RUN npm install -g truffle@5.0.35 web3@1.2.2 ganache-cli@6.7.0 --verbose
 
 # Install go
 RUN wget https://dl.google.com/go/go1.10.4.linux-amd64.tar.gz

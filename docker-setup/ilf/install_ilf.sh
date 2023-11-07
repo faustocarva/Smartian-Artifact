@@ -29,9 +29,11 @@ cd /home/test/tools/ilf/go/src/ilf
 python3 -m pip install "cython<3.0.0" --no-cache-dir
 python3 -m pip install cytoolz --no-cache-dir
 python3 -m pip install -r requirements.txt --no-cache-dir
+python3 -m pip install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 go build -o execution.so -buildmode=c-shared export/execution.go
 
 # for postprocessing
+python3 -m pip install ethereum==2.3.2
 python3 -m pip install eth_abi web3
 
 deactivate
