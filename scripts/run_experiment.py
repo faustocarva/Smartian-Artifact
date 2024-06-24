@@ -2,7 +2,7 @@ import sys, os, subprocess, time
 from common import BASE_DIR, BENCHMARK_DIR
 
 IMAGE_NAME = "smartian-artifact"
-MAX_INSTANCE_NUM = 72
+MAX_INSTANCE_NUM = 2
 AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3"]
 SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore"]
 
@@ -93,7 +93,8 @@ def run_fuzzing(benchmark, targets, tool, timelimit, opt):
         src = "/home/test/benchmarks/%s/sol/%s.sol" % (bench_dirname, targ)
         bin = "/home/test/benchmarks/%s/bin/%s.bin" % (bench_dirname, targ)
         abi = "/home/test/benchmarks/%s/abi/%s.abi" % (bench_dirname, targ)
-        args = "%d %s %s %s %s '%s'" % (timelimit, src, bin, abi, name, opt)
+        seed = "/home/test/benchmarks/%s/seed/%s/seeds" % (bench_dirname, targ)        
+        args = "%d %s %s %s %s '%s' %s" % (timelimit, src, bin, abi, name, opt, seed)
         script = "/home/test/scripts/run_%s.sh" % tool
         cmd = "%s %s" % (script, args)
         run_cmd_in_docker(targ, cmd)
