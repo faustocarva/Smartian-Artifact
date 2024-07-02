@@ -50,7 +50,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "1",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb000000000000000000000000226cc61b3eac93cc2cc9d6cb8d61856670d50fad0000000000000000000000000000000000000000000000000000000000000190",
             "Timestamp": "10000751",
             "Blocknum": "20000744",
             "Function": "transfer(a9059cbb)"
@@ -68,7 +68,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "1",
-            "Data": "79c65068",
+            "Data": "79c65068000000000000000000000000226cc61b3eac93cc2cc9d6cb8d61856670d50fad00000000000000000000000000000000000000000000000000000000000001f4",
             "Timestamp": "10000771",
             "Blocknum": "20000756",
             "Function": "mintToken(79c65068)"

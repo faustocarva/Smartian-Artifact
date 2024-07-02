@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "f2fde38b",
+            "Data": "f2fde38b000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "18000141",
             "Blocknum": "28000198",
             "Function": "transferOwnership(f2fde38b)"
@@ -68,7 +68,7 @@
             "From": "0x33b808a5ae24c410e8739b5ca2d5ef3931d3e09f",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "05fefda7",
+            "Data": "05fefda700000000000000000000000000000000000000000000000000000000000000b400000000000000000000000000000000000000000000000000000000000000dc",
             "Timestamp": "18000171",
             "Blocknum": "28000156",
             "Function": "setPrices(05fefda7)"
@@ -77,7 +77,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "095ea7b3",
+            "Data": "095ea7b3000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e10000000000000000000000000000000000000000000000000000000000000064",
             "Timestamp": "18000181",
             "Blocknum": "28000162",
             "Function": "approve(095ea7b3)"

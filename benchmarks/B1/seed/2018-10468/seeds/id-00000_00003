@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "e58fc54c",
+            "Data": "e58fc54c00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda",
             "Timestamp": "40000141",
             "Blocknum": "50000198",
             "Function": "withdrawForeignTokens(e58fc54c)"
@@ -59,7 +59,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "30",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda000000000000000000000000000000000000000000000000000000000000001e",
             "Timestamp": "40000161",
             "Blocknum": "50000150",
             "Function": "transfer(a9059cbb)"

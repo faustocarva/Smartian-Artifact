@@ -59,7 +59,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "1",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda0000000000000000000000000000000000000000000000000000000000000064",
             "Timestamp": "10000961",
             "Blocknum": "20000950",
             "Function": "transfer(a9059cbb)"

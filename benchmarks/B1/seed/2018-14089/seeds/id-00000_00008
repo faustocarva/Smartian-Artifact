@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "dd62ed3e",
+            "Data": "dd62ed3e00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10001061",
             "Blocknum": "20001080",
             "Function": "allowance(dd62ed3e)"
@@ -50,7 +50,7 @@
             "From": "0x118a2c24808934116e6ab4c00ff48145d23b09e1",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "e45285cf",
+            "Data": "e45285cf0000000000000000000000000000000000000000000000000000000000000064",
             "Timestamp": "10001081",
             "Blocknum": "20001100",
             "Function": "setAIRDROPBounce(e45285cf)"
@@ -59,7 +59,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "e58fc54c",
+            "Data": "e58fc54c00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda",
             "Timestamp": "10001101",
             "Blocknum": "20001120",
             "Function": "withdrawForeignTokens(e58fc54c)"

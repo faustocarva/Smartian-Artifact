@@ -41,7 +41,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "f2fde38b",
+            "Data": "f2fde38b000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10000741",
             "Blocknum": "20000798",
             "Function": "transferOwnership(f2fde38b)"

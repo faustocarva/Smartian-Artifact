@@ -50,7 +50,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "42966c68",
+            "Data": "42966c680000000000000000000000000000000000000000000000000000000000000032",
             "Timestamp": "20000200",
             "Blocknum": "30000200",
             "Function": "burn(42966c68)"
@@ -68,7 +68,7 @@
             "From": "0x118a2c24808934116e6ab4c00ff48145d23b09e1",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "70a08231",
+            "Data": "70a0823100000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda",
             "Timestamp": "20000500",
             "Blocknum": "30000500",
             "Function": "balanceOf(70a08231)"

@@ -50,7 +50,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "70a08231",
+            "Data": "70a0823100000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda",
             "Timestamp": "10000651",
             "Blocknum": "20000644",
             "Function": "balanceOf(70a08231)"
@@ -68,7 +68,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "3",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1000000000000000000000000000000000000000000000000000000000000001e",
             "Timestamp": "10000671",
             "Blocknum": "20000656",
             "Function": "transfer(a9059cbb)"
@@ -77,7 +77,7 @@
             "From": "0x118a2c24808934116e6ab4c00ff48145d23b09e1",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "dd62ed3e",
+            "Data": "dd62ed3e00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10000681",
             "Blocknum": "20000662",
             "Function": "allowance(dd62ed3e)"

@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "1",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e10000000000000000000000000000000000000000000000000000000000000032",
             "Timestamp": "10000941",
             "Blocknum": "20000938",
             "Function": "transfer(a9059cbb)"
@@ -50,7 +50,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "70a08231",
+            "Data": "70a08231000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10000951",
             "Blocknum": "20000944",
             "Function": "balanceOf(70a08231)"
@@ -59,7 +59,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "dd62ed3e",
+            "Data": "dd62ed3e00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10000961",
             "Blocknum": "20000950",
             "Function": "allowance(dd62ed3e)"
@@ -68,7 +68,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "b414d4b6",
+            "Data": "b414d4b6000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e1",
             "Timestamp": "10000971",
             "Blocknum": "20000956",
             "Function": "frozenAccount(b414d4b6)"

@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "f2fde38b",
+            "Data": "f2fde38b000000000000000000000000226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "Timestamp": "10000941",
             "Blocknum": "20000998",
             "Function": "transferOwnership(f2fde38b)"
@@ -50,7 +50,7 @@
             "From": "0x118a2c24808934116e6ab4c00ff48145d23b09e1",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "c634d032",
+            "Data": "c634d03200000000000000000000000000000000000000000000000000000000000000a0",
             "Timestamp": "10000951",
             "Blocknum": "20000944",
             "Function": "mintToken(c634d032)"
@@ -59,7 +59,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "05fefda7",
+            "Data": "05fefda700000000000000000000000000000000000000000000000000000000000000b400000000000000000000000000000000000000000000000000000000000000dc",
             "Timestamp": "10000961",
             "Blocknum": "20000950",
             "Function": "setPrices(05fefda7)"

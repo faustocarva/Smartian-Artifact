@@ -41,7 +41,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "70a08231",
+            "Data": "70a0823100000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda",
             "Timestamp": "10000141",
             "Blocknum": "20000198",
             "Function": "balanceOf(70a08231)"
@@ -68,7 +68,7 @@
             "From": "0x24cd2edba056b7c654a50e8201b619d4f624fdda",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "603d1d1c",
+            "Data": "603d1d1c0000000000000000000000000000000000000000000000000000000000000001",
             "Timestamp": "10000171",
             "Blocknum": "20000156",
             "Function": "setSellOpen(603d1d1c)"
