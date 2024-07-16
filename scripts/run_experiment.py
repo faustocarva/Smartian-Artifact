@@ -4,7 +4,7 @@ from common import BASE_DIR, BENCHMARK_DIR
 IMAGE_NAME = "smartian-artifact"
 MAX_INSTANCE_NUM = 2
 AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3"]
-SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore"]
+SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore", "smartian_llm"]
 
 def run_cmd(cmd_str):
     print("[*] Executing: %s" % cmd_str)
