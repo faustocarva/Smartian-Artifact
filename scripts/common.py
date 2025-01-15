@@ -3,12 +3,13 @@ import os
 ### Constants and configurations.
 
 TOTAL_TIME = 60 # Total fuzzing time in minute.
-PLOT_INTERVAL = 5 # Interval to plot the number of found bugs over time.
+PLOT_INTERVAL = 1 # Interval to plot the number of found bugs over time.
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), os.pardir)
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmarks")
 B1_CVE_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-cve.csv")
 B1_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-ins.csv")
+B2_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-ins.csv")
 B2_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-bug.csv")
 
 FUZZ_LOG_NAME = "log.txt"

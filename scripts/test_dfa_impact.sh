@@ -20,26 +20,33 @@ fi
 
 mkdir -p $OUTDIR/result-dfa-impact
 
-# With both data-flow analyses enabled.
-for i in $(seq $1); do
-    python $SCRIPTDIR/run_experiment.py B1 smartian 3600
-done
-mkdir -p $OUTDIR/result-dfa-impact/dfa
-mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/dfa/
+# # With both data-flow analyses enabled.
+# for i in $(seq $1); do
+#     python $SCRIPTDIR/run_experiment.py B1 smartian 3600
+# done
+# mkdir -p $OUTDIR/result-dfa-impact/dfa
+# mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/dfa/
 
-# With only static data-flow analysis enabled.
-for i in $(seq $1); do
-    python $SCRIPTDIR/run_experiment.py B1 smartian 3600 --noddfa
-done
-mkdir -p $OUTDIR/result-dfa-impact/static
-mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/static/
+# # With only static data-flow analysis enabled.
+# for i in $(seq $1); do
+#     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 --noddfa
+# done
+# mkdir -p $OUTDIR/result-dfa-impact/static
+# mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/static/
 
-# With only dynamic data-flow analysis enabled.
-for i in $(seq $1); do
-    python $SCRIPTDIR/run_experiment.py B1 smartian 3600 --nosdfa
-done
-mkdir -p $OUTDIR/result-dfa-impact/dynamic
-mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/dynamic/
+# # With only dynamic data-flow analysis enabled.
+# for i in $(seq $1); do
+#     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 --nosdfa
+# done
+# mkdir -p $OUTDIR/result-dfa-impact/dynamic
+# mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/dynamic/
+
+# # Without any data-flow analysis.
+# for i in $(seq $1); do
+#     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--noddfa --nosdfa"
+# done
+# mkdir -p $OUTDIR/result-dfa-impact/nodfa
+# mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/nodfa/
 
 # With LLM seeds and dynamic data-flow analysis enabled.
 for i in $(seq $1); do
@@ -55,19 +62,9 @@ done
 mkdir -p $OUTDIR/result-dfa-impact/llmseeds_dfa
 mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/llmseeds_dfa
 
-
-
 # With LLM seeds and dynamic data-flow analysis enabled.
 for i in $(seq $1); do
     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--uselllmseeds --nosdfa --noddfa"
 done
 mkdir -p $OUTDIR/result-dfa-impact/llmseeds_no_dynamic
 mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/llmseeds_no_dynamic
-
-
-# Without any data-flow analysis.
-for i in $(seq $1); do
-    python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--noddfa --nosdfa"
-done
-mkdir -p $OUTDIR/result-dfa-impact/nodfa
-mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/nodfa/
