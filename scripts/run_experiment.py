@@ -13,6 +13,7 @@ def run_cmd(cmd_str):
         PIPE = subprocess.PIPE
         p = subprocess.Popen(cmd_args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
         output, err = p.communicate()
+        output = output.decode("utf-8").strip()
         return str(output)
     except Exception as e:
         print(e)

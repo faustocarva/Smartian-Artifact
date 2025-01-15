@@ -48,21 +48,21 @@ mkdir -p $OUTDIR/result-dfa-impact
 # mkdir -p $OUTDIR/result-dfa-impact/nodfa
 # mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/nodfa/
 
-# With LLM seeds and dynamic data-flow analysis enabled.
+# 1 With LLM seeds and dynamic data-flow analysis enabled.
 for i in $(seq $1); do
     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--uselllmseeds --nosdfa"
 done
 mkdir -p $OUTDIR/result-dfa-impact/llmseeds_dynamic
 mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/llmseeds_dynamic
 
-# With LLM seeds and full data-flow analysis enabled.
+# 2 With LLM seeds and full data-flow analysis enabled.
 for i in $(seq $1); do
     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--uselllmseeds"
 done
 mkdir -p $OUTDIR/result-dfa-impact/llmseeds_dfa
 mv $OUTDIR/B1-smartian-* $OUTDIR/result-dfa-impact/llmseeds_dfa
 
-# With LLM seeds and dynamic data-flow analysis enabled.
+# 3 With LLM seeds and dynamic data-flow analysis enabled.
 for i in $(seq $1); do
     python $SCRIPTDIR/run_experiment.py B1 smartian 3600 "--uselllmseeds --nosdfa --noddfa"
 done
