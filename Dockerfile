@@ -95,15 +95,18 @@ RUN mkdir /home/test/tools
 # ENV LC_ALL en_US.UTF-8
 # RUN /home/test/tools/mythril/install_mythril.sh
 
+# Set Git HTTP settings to avoid slowness timeouts
+RUN git config --global http.lowSpeedLimit 0 && \
+    git config --global http.lowSpeedTime 999999 && \
+    git config --global http.postBuffer 1048576000 && \
+    git config --global http.maxRequestBuffer 1048576000 && \
+    git config --global submodule.fetchJobs 1
+
 # Install Smartian
 RUN cd /home/test/tools/ && \
-    git clone https://github.com/faustocarva/Smartian.git && \
-    rm -fR Smartian && \
-    git clone https://github.com/faustocarva/Smartian.git && \
-    rm -fR Smartian && \
-    git clone https://github.com/faustocarva/Smartian.git && \    
+    git clone  --depth 1 https://github.com/faustocarva/Smartian.git && \
     cd Smartian && \
-    git submodule update --init --recursive && \
+    git submodule update --init --recursive --checkout && \
     make
 
 # Add scripts for each tool
