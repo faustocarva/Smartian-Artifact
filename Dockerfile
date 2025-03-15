@@ -95,11 +95,14 @@ RUN mkdir /home/test/tools
 # ENV LC_ALL en_US.UTF-8
 # RUN /home/test/tools/mythril/install_mythril.sh
 
+
 # Set Git HTTP settings to avoid slowness timeouts
 RUN git config --global http.lowSpeedLimit 0 && \
     git config --global http.lowSpeedTime 999999 && \
     git config --global http.postBuffer 1048576000 && \
     git config --global http.maxRequestBuffer 1048576000 && \
+    git config --global http.version HTTP/1.1 && \
+    git config --global http.sslVerify false && \
     git config --global submodule.fetchJobs 1
 
 # Install Smartian
