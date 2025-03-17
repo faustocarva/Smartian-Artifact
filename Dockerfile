@@ -94,8 +94,6 @@ RUN mkdir /home/test/tools
 # ENV LANGUAGE en_US.en
 # ENV LC_ALL en_US.UTF-8
 # RUN /home/test/tools/mythril/install_mythril.sh
-
-
 RUN git config --global http.lowSpeedLimit 0 && \
     git config --global http.lowSpeedTime 999999 && \
     git config --global http.postBuffer 2097152000 && \
@@ -108,14 +106,21 @@ RUN git config --global http.lowSpeedLimit 0 && \
     git config --global fetch.unpackLimit 100 && \
     git config --global pack.windowMemory 2g && \
     git config --global pack.packSizeLimit 2g && \
-    git config --global pack.threads 1
-    
+    git config --global pack.threads 1 && \
+    git config --global http.receivepack 100m && \
+    git config --global core.packedGitLimit 512m && \
+    git config --global core.packedGitWindowSize 512m && \
+    git config --global ssh.postBuffer 2048M && \
+    git config --global http.timeout 300
+
 # Install Smartian
 RUN cd /home/test/tools/ && \
     git clone  --depth 1 https://github.com/faustocarva/Smartian.git && \
     cd Smartian && \
-    git submodule update --init --recursive --checkout && \
+    git submodule init && \
+    git submodule update --init --recursive --checkout  --depth 1 && \
     make
+
 
 # Add scripts for each tool
 COPY --chown=test:test ./docker-setup/tool-scripts/ /home/test/scripts
