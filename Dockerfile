@@ -96,15 +96,20 @@ RUN mkdir /home/test/tools
 # RUN /home/test/tools/mythril/install_mythril.sh
 
 
-# Set Git HTTP settings to avoid slowness timeouts
 RUN git config --global http.lowSpeedLimit 0 && \
     git config --global http.lowSpeedTime 999999 && \
-    git config --global http.postBuffer 1048576000 && \
-    git config --global http.maxRequestBuffer 1048576000 && \
+    git config --global http.postBuffer 2097152000 && \
+    git config --global http.maxRequestBuffer 2097152000 && \
     git config --global http.version HTTP/1.1 && \
     git config --global http.sslVerify false && \
-    git config --global submodule.fetchJobs 1
-
+    git config --global submodule.fetchJobs 1 && \
+    git config --global core.compression 0 && \
+    git config --global transfer.fsckobjects false && \
+    git config --global fetch.unpackLimit 100 && \
+    git config --global pack.windowMemory 2g && \
+    git config --global pack.packSizeLimit 2g && \
+    git config --global pack.threads 1
+    
 # Install Smartian
 RUN cd /home/test/tools/ && \
     git clone  --depth 1 https://github.com/faustocarva/Smartian.git && \
