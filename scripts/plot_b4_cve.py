@@ -1,15 +1,15 @@
 import sys, os
-from common import get_tool_sigs, init_b2_bug_info, init_b4_bug_info
+from common import get_tool_sigs,  init_b4_bug_info
 from common import read_log_file, parse_fuzz_log
 from common import print_found_time, plot_count_over_time
 from common import RE,ME,IB,SC,BD
 
 def classify_targets(bug_info, targ_list, bug_sigs):
-    RE_sig, ME_sig, IB_sig, SC_sig = bug_sigs
+    RE_sig, ME_sig, IB_sig, BD_sig = bug_sigs
     RE_list = []
     ME_list = []
     IB_list = []
-    SC_list = []
+    BD_list = []
     for targ in targ_list:
         if (RE_sig, True) in bug_info[targ]:
             RE_list.append(targ)
@@ -17,9 +17,9 @@ def classify_targets(bug_info, targ_list, bug_sigs):
             ME_list.append(targ)
         if (IB_sig, True) in bug_info[targ]:
             IB_list.append(targ)
-        if (SC_sig, True) in bug_info[targ]:
-            SC_list.append(targ)            
-    return (RE_list, ME_list, IB_list, SC_list)
+        if (BD_sig, True) in bug_info[targ]:
+            BD_list.append(targ)            
+    return (RE_list, ME_list, IB_list, BD_list)
 
 def analyze_targ(bug_list, result_dir, targ, time_map):
     buf = read_log_file(result_dir, targ)
@@ -50,10 +50,10 @@ def main():
         sig_set = "default"
         result_dirs = sys.argv[1:]
 
-    bug_sigs = get_tool_sigs(sig_set, [RE, ME, IB, SC])
-    RE_sig, ME_sig, IB_sig, SC_sig = bug_sigs
+    bug_sigs = get_tool_sigs(sig_set, [RE, ME, IB, BD])
+    RE_sig, ME_sig, IB_sig, BD_sig = bug_sigs
 
-    bug_info = init_b4_bug_info(RE_sig, ME_sig, IB_sig, SC_sig)
+    bug_info = init_b4_bug_info(RE_sig, ME_sig, IB_sig, BD_sig)
     targ_list = os.listdir(result_dirs[0])
     targ_list.sort()
 
@@ -62,14 +62,14 @@ def main():
         time_map = analyze_dir(bug_info, result_dir, targ_list)
         time_map_list.append(time_map)
 
-    RE_list, ME_list, IB_list, SC_list = classify_targets(bug_info, targ_list, bug_sigs)
+    RE_list, ME_list, IB_list, BD_list = classify_targets(bug_info, targ_list, bug_sigs)
     print_found_time(RE_sig, RE_list, time_map_list)
     print("===================================")
     print_found_time(ME_sig, ME_list, time_map_list)
     print("===================================")
     print_found_time(IB_sig, IB_list, time_map_list)
     print("===================================")
-    print_found_time(SC_sig, SC_list, time_map_list)
+    print_found_time(BD_sig, BD_list, time_map_list)
     print("===================================")    
     plot_count_over_time(bug_sigs, time_map_list)
 

@@ -1,5 +1,5 @@
 // solium-disable linebreak-style
-pragma solidity =0.5.13;
+pragma solidity ^0.5.0;
 
 contract CryptoTycoonsVIPLib{
     

@@ -10,6 +10,7 @@ BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmarks")
 B1_CVE_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-cve.csv")
 B1_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-ins.csv")
 B2_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-ins.csv")
+B4_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-ins.csv")
 B2_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-bug.csv")
 B4_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-bug.csv")
 
@@ -98,7 +99,7 @@ def init_b2_bug_info(BD_sig, ME_sig, RE_sig):
 
 
 
-def init_b4_bug_info(RE_sig, ME_sig, IB_sig, SC_sig):
+def init_b4_bug_info(RE_sig, ME_sig, IB_sig, BD_sig):
     bug_info = { }
     bug_csv_file = open(B4_BUG_INFO_FILE, "r")
     for buf in bug_csv_file:
@@ -111,7 +112,7 @@ def init_b4_bug_info(RE_sig, ME_sig, IB_sig, SC_sig):
         bug_list.append((RE_sig, has_bug(tokens[2])))
         bug_list.append((ME_sig, has_bug(tokens[3])))
         bug_list.append((IB_sig, has_bug(tokens[4])))
-        bug_list.append((SC_sig, has_bug(tokens[5])))        
+        bug_list.append((BD_sig, has_bug(tokens[5])))        
         bug_info[targ] = bug_list
     bug_csv_file.close()
     return bug_info
