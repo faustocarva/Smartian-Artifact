@@ -21,19 +21,19 @@ fi
 mkdir -p $OUTDIR/result-B4-compare
 
 
-# # With both data-flow analyses enabled.
-# for i in $(seq $1); do
-#     python $SCRIPTDIR/run_experiment.py B4 smartian 900
-# done
-# mkdir -p $OUTDIR/result-B4-compare/result-B4-compare/dfa
-# mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/dfa/
+# With both data-flow analyses enabled.
+for i in $(seq $1); do
+     python $SCRIPTDIR/run_experiment.py B4 smartian 1800
+done
+mkdir -p $OUTDIR/result-B4-compare/dfa
+mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/dfa/
 
 # With LLM seeds and bug gain enabled.
-for i in $(seq $1); do
-    python $SCRIPTDIR/run_experiment.py B4 smartian 900 "--uselllmseeds --nosdfa --noddfa --withbuggain"
-done
-mkdir -p $OUTDIR/result-B4-compare/llmseeds_no_dynamic_buggain
-mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/llmseeds_no_dynamic_buggain
+# for i in $(seq $1); do
+#    python $SCRIPTDIR/run_experiment.py B4 smartian 900 "--uselllmseeds --nosdfa --noddfa --withbuggain"
+# done
+# mkdir -p $OUTDIR/result-B4-compare/llmseeds_no_dynamic_buggain
+# mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/llmseeds_no_dynamic_buggain
 
 # # With full DFA 
 # for i in $(seq $1); do
@@ -44,8 +44,8 @@ mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/llmseeds_no_dynamic_buggain
 
 
 # random seeds
-# for i in $(seq $1); do
-#     python $SCRIPTDIR/run_experiment.py B4 smartian 900 "--nosdfa --noddfa"
-# done
-# mkdir -p $OUTDIR/result-B4-compare/llmseeds_no_dfa
-# mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/llmseeds_no_dfa
+for i in $(seq $1); do
+    python $SCRIPTDIR/run_experiment.py B4 smartian 1800 "--nosdfa --noddfa"
+done
+mkdir -p $OUTDIR/result-B4-compare/nodfa
+mv $OUTDIR/B4-smartian-* $OUTDIR/result-B4-compare/nodfa

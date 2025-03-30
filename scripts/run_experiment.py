@@ -2,7 +2,8 @@ import sys, os, subprocess, time
 from common import BASE_DIR, BENCHMARK_DIR
 
 IMAGE_NAME = "smartian-artifact"
-MAX_INSTANCE_NUM = 2
+# procs for 
+MAX_INSTANCE_NUM = 20
 AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3", "B4"]
 SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore"]
 
