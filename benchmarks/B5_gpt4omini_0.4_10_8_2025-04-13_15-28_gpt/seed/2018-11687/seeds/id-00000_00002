@@ -50,7 +50,7 @@
             "From": "0x118a2c24808934116e6ab4c00ff48145d23b09e1",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb000000000000000000000000226cc61b3eac93cc2cc9d6cb8d61856670d50fad0000000000000000000000000000000000000000000000000000002e90edd000",
             "Timestamp": "10000022",
             "Blocknum": "20000022",
             "Function": "transfer(a9059cbb)"
@@ -59,7 +59,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "23b872dd",
+            "Data": "23b872dd000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e100000000000000000000000033b808a5ae24c410e8739b5ca2d5ef3931d3e09f000000000000000000000000000000000000000000000000000000174876e800",
             "Timestamp": "10000023",
             "Blocknum": "20000023",
             "Function": "transferFrom(23b872dd)"
@@ -68,7 +68,7 @@
             "From": "0x33b808a5ae24c410e8739b5ca2d5ef3931d3e09f",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "095ea7b3",
+            "Data": "095ea7b300000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda00000000000000000000000000000000000000000000000000000045d964b800",
             "Timestamp": "10000024",
             "Blocknum": "20000024",
             "Function": "approve(095ea7b3)"
@@ -95,7 +95,7 @@
             "From": "0x226cc61b3eac93cc2cc9d6cb8d61856670d50fad",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "a9059cbb",
+            "Data": "a9059cbb00000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda00000000000000000000000000000000000000000000000000000002540be400",
             "Timestamp": "10000027",
             "Blocknum": "20000027",
             "Function": "transfer(a9059cbb)"
@@ -104,7 +104,7 @@
             "From": "0x33b808a5ae24c410e8739b5ca2d5ef3931d3e09f",
             "To": "0x6b773032d99fb9aad6fc267651c446fa7f9301af",
             "Value": "0",
-            "Data": "23b872dd",
+            "Data": "23b872dd000000000000000000000000118a2c24808934116e6ab4c00ff48145d23b09e100000000000000000000000024cd2edba056b7c654a50e8201b619d4f624fdda0000000000000000000000000000000000000000000000000000000ba43b7400",
             "Timestamp": "10000028",
             "Blocknum": "20000028",
             "Function": "transferFrom(23b872dd)"
