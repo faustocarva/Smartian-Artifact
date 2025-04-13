@@ -6,6 +6,9 @@ import matplotlib_venn
 from matplotlib_venn import venn3, venn3_circles, venn2, venn2_circles
 import numpy as np
 from itertools import combinations
+import plotly.graph_objects as go
+import pandas as pd
+import os
 
 def parse_file(filename):
     """Parse a file and return a dictionary of found contracts."""
@@ -20,6 +23,92 @@ def parse_file(filename):
                 found_contracts.add(contract_id)
                 
     return found_contracts
+
+def get_exclusive_contracts(method_sets):
+    """Get contracts found exclusively by each method."""
+    exclusive_contracts = {}
+    
+    for method, contracts in method_sets.items():
+        # Get all contracts from other methods
+        other_contracts = set()
+        for other_method, other_set in method_sets.items():
+            if other_method != method:
+                other_contracts.update(other_set)
+        
+        # Exclusive contracts are those not found by any other method
+        exclusive_contracts[method] = contracts - other_contracts
+        
+    return exclusive_contracts
+
+def create_sankey_diagram(method_sets, filename="sankey_diagram.html"):
+    """Create a Sankey diagram showing how contracts flow between methods."""
+    # Create dataframe for Sankey diagram
+    source = []
+    target = []
+    value = []
+    
+    method_keys = list(method_sets.keys())
+    method_ids = {name: i for i, name in enumerate(method_keys)}
+    
+    # Add nodes for each method and for "Contracts"
+    labels = ["Contracts"] + method_keys
+    
+    # For each method, add a link from "Contracts" to that method
+    contracts_node_id = 0
+    for method, contracts in method_sets.items():
+        method_id = method_ids[method] + 1  # +1 because "Contracts" is at index 0
+        source.append(contracts_node_id)
+        target.append(method_id)
+        value.append(len(contracts))
+    
+    # For overlapping contracts, create additional nodes and links
+    overlap_node_id = len(labels)
+    
+    # Calculate all possible overlaps (each region is a unique combination of sets)
+    for k in range(2, len(method_keys) + 1):
+        for combo in combinations(method_keys, k):
+            # Only process if there's an actual overlap
+            combo_set = set.intersection(*[method_sets[name] for name in combo])
+            if combo_set:
+                combo_name = " ∩ ".join(combo)
+                labels.append(combo_name)
+                
+                # Add links from each method in the combo to this overlap
+                for method in combo:
+                    method_id = method_ids[method] + 1
+                    source.append(method_id)
+                    target.append(overlap_node_id)
+                    # Divide by number of methods to avoid counting multiple times
+                    value.append(len(combo_set) / len(combo))
+                
+                overlap_node_id += 1
+    
+    # Create the Sankey diagram
+    fig = go.Figure(data=[go.Sankey(
+        node=dict(
+            pad=15,
+            thickness=20,
+            line=dict(color="black", width=0.5),
+            label=labels,
+            color="blue"
+        ),
+        link=dict(
+            source=source,
+            target=target,
+            value=value
+        )
+    )])
+    
+    fig.update_layout(
+        title_text=f"Contract Flow between Fuzzing Methods",
+        font_size=10
+    )
+    
+    # Save the Sankey diagram
+    fig.write_html(filename)
+    print(f"Sankey diagram saved as {filename}")
+    
+    return fig
 
 def main():
     if len(sys.argv) < 3:
@@ -36,13 +125,15 @@ def main():
         method_files = method_files[:4]
     
     # Get base filenames without path and extension for labels
-    import os
     method_names = [os.path.splitext(os.path.basename(f))[0] for f in method_files]
     
     # Parse each file
     method_sets = {}
     for i, method_file in enumerate(method_files):
         method_sets[method_names[i]] = parse_file(method_file)
+    
+    # Get contracts found exclusively by each method
+    exclusive_contracts = get_exclusive_contracts(method_sets)
     
     # Create a custom four-ellipse Venn diagram
     # Create figure and axes
@@ -231,7 +322,6 @@ def main():
     # Save with filename based on number of methods
     num_methods = len(method_keys)
     plt.savefig(f'{num_methods}_way_venn_diagram.png', dpi=300, bbox_inches='tight')
-    plt.show()
     
     # Print some statistics
     print(f"Total unique contracts found across all methods: {total_found}")
@@ -241,16 +331,25 @@ def main():
     for method, contracts in method_sets.items():
         print(f"{method}: {len(contracts)}")
     
-    # Print breakdown by intersection regions:
+    # Print exclusive contracts by method
+    print("\nContracts found EXCLUSIVELY by each method:")
+    for method, contracts in exclusive_contracts.items():
+        print(f"{method}: {len(contracts)}")
+        if contracts:
+            print(f"  Contracts: {', '.join(sorted(contracts))}")
+        else:
+            print("  No exclusive contracts found")
+    
+    # Print breakdown by intersection regions
     print("\nBreakdown by intersection regions:")
     for region, contracts in sorted(regions.items()):
         if len(contracts) > 0:
             print(f"{region}: {len(contracts)}")
-            # Print the contract IDs in this intersection
-            print("Contracts in this intersection:")
-            for contract_id in sorted(contracts):
-                print(f"  {contract_id}")
-            print()  # Add an empty line for better readability
+    
+    # Create and save Sankey diagram
+    create_sankey_diagram(method_sets)
+    
+    plt.show()
 
 if __name__ == "__main__":
     main()

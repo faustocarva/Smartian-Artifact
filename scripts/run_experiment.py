@@ -3,8 +3,8 @@ from common import BASE_DIR, BENCHMARK_DIR
 
 IMAGE_NAME = "smartian-artifact"
 # procs for 
-MAX_INSTANCE_NUM = 20
-AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3", "B4"]
+MAX_INSTANCE_NUM = 5
+AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3", "B4", "B5"]
 SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore"]
 
 def run_cmd(cmd_str):

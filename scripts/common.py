@@ -117,6 +117,23 @@ def init_b4_bug_info(RE_sig, ME_sig, IB_sig, BD_sig):
     bug_csv_file.close()
     return bug_info
 
+def init_b5_bug_info(ME_sig, IB_sig, BD_sig):
+    bug_info = { }
+    bug_csv_file = open(B4_BUG_INFO_FILE, "r")
+    for buf in bug_csv_file:
+        tokens = buf.strip().split(",")
+        if len(tokens) != 6:
+            print("Invalid entry in CSV file: %s" % buf)
+            exit(1)
+        targ = tokens[0]
+        bug_list = []
+        bug_list.append((ME_sig, has_bug(tokens[2])))
+        bug_list.append((BD_sig, has_bug(tokens[3])))        
+        bug_list.append((IB_sig, has_bug(tokens[4])))
+        bug_info[targ] = bug_list
+    bug_csv_file.close()
+    return bug_info
+
 
 ### Functions for parsing log files.
 
