@@ -3,16 +3,18 @@ import os
 ### Constants and configurations.
 
 TOTAL_TIME = 60 # Total fuzzing time in minute.
-PLOT_INTERVAL = 1 # Interval to plot the number of found bugs over time.
+PLOT_INTERVAL = 5# Interval to plot the number of found bugs over time.
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), os.pardir)
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmarks")
 B1_CVE_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-cve.csv")
+B1_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-bug.csv")
 B1_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-ins.csv")
 B2_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-ins.csv")
 B4_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-ins.csv")
 B2_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-bug.csv")
 B4_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-bug.csv")
+B5_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B5-bug.csv")
 
 FUZZ_LOG_NAME = "log.txt"
 COV_FILE_NAME = "cov.txt"
@@ -119,10 +121,10 @@ def init_b4_bug_info(RE_sig, ME_sig, IB_sig, BD_sig):
 
 def init_b5_bug_info(ME_sig, IB_sig, BD_sig):
     bug_info = { }
-    bug_csv_file = open(B4_BUG_INFO_FILE, "r")
+    bug_csv_file = open(B5_BUG_INFO_FILE, "r")
     for buf in bug_csv_file:
         tokens = buf.strip().split(",")
-        if len(tokens) != 6:
+        if len(tokens) != 5:
             print("Invalid entry in CSV file: %s" % buf)
             exit(1)
         targ = tokens[0]
@@ -130,6 +132,21 @@ def init_b5_bug_info(ME_sig, IB_sig, BD_sig):
         bug_list.append((ME_sig, has_bug(tokens[2])))
         bug_list.append((BD_sig, has_bug(tokens[3])))        
         bug_list.append((IB_sig, has_bug(tokens[4])))
+        bug_info[targ] = bug_list
+    bug_csv_file.close()
+    return bug_info
+
+def init_b1_bug_info(IB_sig):
+    bug_info = { }
+    bug_csv_file = open(B1_BUG_INFO_FILE, "r")
+    for buf in bug_csv_file:
+        tokens = buf.strip().split(",")
+        if len(tokens) != 2:
+            print("Invalid entry in CSV file: %s" % buf)
+            exit(1)
+        targ = tokens[0]
+        bug_list = []
+        bug_list.append((IB_sig, has_bug(tokens[1])))
         bug_info[targ] = bug_list
     bug_csv_file.close()
     return bug_info

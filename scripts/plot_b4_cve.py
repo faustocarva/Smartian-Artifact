@@ -11,6 +11,8 @@ def classify_targets(bug_info, targ_list, bug_sigs):
     IB_list = []
     BD_list = []
     for targ in targ_list:
+        if targ not in bug_info:
+            continue
         if (RE_sig, True) in bug_info[targ]:
             RE_list.append(targ)
         if (ME_sig, True) in bug_info[targ]:
@@ -34,8 +36,10 @@ def analyze_targ(bug_list, result_dir, targ, time_map):
 def analyze_dir(bug_info, result_dir, targ_list):
     time_map = {}
     for targ in targ_list:
-        bug_list = bug_info[targ]
-        analyze_targ(bug_list, result_dir, targ, time_map)
+        if targ in bug_info:
+            bug_list = bug_info[targ]
+            analyze_targ(bug_list, result_dir, targ, time_map)
+        # If targ not in bug_info, just continue        
     return time_map
 
 def main():

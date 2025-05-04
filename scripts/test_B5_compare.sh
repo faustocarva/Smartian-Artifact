@@ -21,7 +21,7 @@ fi
 mkdir -p $OUTDIR/result-B5-compare
 
 for i in $(seq $1); do
-   python $SCRIPTDIR/run_experiment.py B5 smartian 3600 "--uselllmseeds --nosdfa --noddfa --withbuggain"
+   python $SCRIPTDIR/run_experiment.py B5 smartian 3600 "--uselllmseeds "
 done
 mkdir -p $OUTDIR/result-B5-compare/llmseeds_no_dynamic_buggain
 mv $OUTDIR/B5-smartian-* $OUTDIR/result-B5-compare/llmseeds_no_dynamic_buggain
