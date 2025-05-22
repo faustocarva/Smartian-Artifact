@@ -1,4 +1,4 @@
-0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f,-,-,50,-,-
+0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f,-,-,50,52,43
 0x0cbe050f75bc8f8c2d6c0d249fea125fd6e1acc9,-,12,-,-,-
 0x19cf8481ea15427a98ba3cdd6d9e14690011ab10,458/465,439/465,-,-,-
 0x2972d548497286d18e92b5fa1f8f9139e5653fd2,-,14,-,-,-
@@ -27,7 +27,7 @@
 0x9d06cbafa865037a01d322d3f4222fa3e04e5488,-,54/65,-,-,-
 0xa1fceeff3acc57d257b917e30c4df661401d6431,-,31,-,-,-
 0xa46edd6a9a93feec36576ee5048146870ea2c3ae,-,16,-,-,-
-0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8,-,-,50,-,-
+0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8,-,-,50,52,43
 0xb0510d68f210b7db66e8c7c814f22680f2b8d1d6,-,69/71/73/75/102,-,-,-
 0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77,-,14,-,-,-
 0xb37f18af15bafb869a065b61fc83cfc44ed9cc27,-,33,-,-,-
@@ -51,7 +51,7 @@ etheraffle,104/107,-,-,-,-
 etherbank,-,-,21,-,-
 etherpot_lotto,98/109,109/141,-,-,-
 etherstore,25/27,-,27,-,-
-guess_the_random_number,15/25,-,-,-,-
+guess_the_random_number,15/25,-,-,-,26
 king_of_the_ether_throne,-,110/118/132/174,-,-,-
 lottery,38/45,-,-,-,-
 lotto,-,20/27,-,-,-
@@ -71,7 +71,7 @@ multiowned_vulnerable,-,-,-,-,34
 tokensalechallenge,-,-,-,-,14
 wallet_02_refund_nosub,-,-,-,-,23
 wallet_04_confused_sign,-,-,-,-,19
-BecToken,-,-,-,264,-
+BECToken,-,-,-,264,-
 insecure_transfer,-,-,-,12,-
 timelock,27,-,-,22,-
 tokensalechallenge_int,-,-,-,21/27,-

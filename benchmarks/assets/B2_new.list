@@ -71,7 +71,7 @@ multiowned_vulnerable,TestContract
 tokensalechallenge,TokenSaleChallenge
 wallet_02_refund_nosub,Wallet
 wallet_04_confused_sign,Wallet
-BecToken,BECToken
+BECToken,BECToken
 insecure_transfer,IntegerOverflowAdd
 timelock,TimeLock
 tokensalechallenge_int,TokenSaleChallenge
