@@ -3,7 +3,7 @@ import os
 ### Constants and configurations.
 
 TOTAL_TIME = 60 # Total fuzzing time in minute.
-PLOT_INTERVAL = 5# Interval to plot the number of found bugs over time.
+PLOT_INTERVAL = 1# Interval to plot the number of found bugs over time.
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), os.pardir)
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmarks")
@@ -13,7 +13,6 @@ B1_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B1-ins.csv")
 B2_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-ins.csv")
 B4_INST_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-ins.csv")
 B2_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-bug.csv")
-B2_NEW_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B2-bug_new.csv")
 B4_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B4-bug.csv")
 B5_BUG_INFO_FILE = os.path.join(BENCHMARK_DIR, "assets", "B5-bug.csv")
 
@@ -83,26 +82,9 @@ def has_bug(s):
         print("Invalid bug str: %s" % s)
         assert(False)
 
-def init_b2_bug_info(BD_sig, ME_sig, RE_sig):
+def init_b2_bug_info(BD_sig, ME_sig, RE_sig, IB_sig, EL_sig):
     bug_info = { }
     bug_csv_file = open(B2_BUG_INFO_FILE, "r")
-    for buf in bug_csv_file:
-        tokens = buf.strip().split(",")
-        if len(tokens) != 4:
-            print("Invalid entry in CSV file: %s" % buf)
-            exit(1)
-        targ = tokens[0]
-        bug_list = []
-        bug_list.append((BD_sig, has_bug(tokens[1])))
-        bug_list.append((ME_sig, has_bug(tokens[2])))
-        bug_list.append((RE_sig, has_bug(tokens[3])))
-        bug_info[targ] = bug_list
-    bug_csv_file.close()
-    return bug_info
-
-def init_b2_new_bug_info(BD_sig, ME_sig, RE_sig, IB_sig, EL_sig):
-    bug_info = { }
-    bug_csv_file = open(B2_NEW_BUG_INFO_FILE, "r")
     for buf in bug_csv_file:
         tokens = buf.strip().split(",")
         if len(tokens) != 6:

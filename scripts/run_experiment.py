@@ -3,9 +3,9 @@ from common import BASE_DIR, BENCHMARK_DIR
 
 IMAGE_NAME = "smartian-artifact"
 # procs for 
-MAX_INSTANCE_NUM = 20
+MAX_INSTANCE_NUM = 6
 AVAILABLE_BENCHMARKS = ["B1", "B1-noarg", "B2", "B3", "B4", "B5"]
-SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore"]
+SUPPORTED_TOOLS = ["smartian", "sFuzz", "ilf", "mythril", "manticore", "confuzius"]
 
 def run_cmd(cmd_str):
     print("[*] Executing: %s" % cmd_str)
@@ -91,21 +91,23 @@ def spawn_containers(targets):
 
 def run_fuzzing(benchmark, targets, tool, timelimit, opt):
     bench_dirname = decide_bench_dirname(benchmark)
-    for targ, name in targets:
+    normalized = [t if len(t) == 3 else (t[0], t[1], None) for t in targets]    
+    for targ, name, solcv in normalized:
         src = "/home/test/benchmarks/%s/sol/%s.sol" % (bench_dirname, targ)
         bin = "/home/test/benchmarks/%s/bin/%s.bin" % (bench_dirname, targ)
         abi = "/home/test/benchmarks/%s/abi/%s.abi" % (bench_dirname, targ)
-        seed = "/home/test/benchmarks/%s/seed/%s/seeds" % (bench_dirname, targ)        
-        args = "%d %s %s %s %s '%s' %s" % (timelimit, src, bin, abi, name, opt, seed)
+        seed = "/home/test/benchmarks/%s/seed/%s/seeds" % (bench_dirname, targ)
+        args = "%d %s %s %s %s '%s' %s '%s'" % (timelimit, src, bin, abi, name, opt, seed, solcv if solcv != None else '')
         script = "/home/test/scripts/run_%s.sh" % tool
         cmd = "%s %s" % (script, args)
         run_cmd_in_docker(targ, cmd)
-    time.sleep(timelimit + 180)
+    time.sleep(timelimit + 120)
 
 def measure_coverage(benchmark, targets, tool):
     bench_dirname = decide_bench_dirname(benchmark)
+    normalized = [t if len(t) == 3 else (t[0], t[1], None) for t in targets]        
     plot_intv = 1 # Plot coverage for each minute.
-    for targ, name in targets:
+    for targ, name, _ in normalized:
         bin = "/home/test/benchmarks/%s/bin/%s.bin" % (bench_dirname, targ)
         abi = "/home/test/benchmarks/%s/abi/%s.abi" % (bench_dirname, targ)
         args = "%s %s %s %s %d" % (tool, bin, abi, name, plot_intv)
@@ -115,12 +117,15 @@ def measure_coverage(benchmark, targets, tool):
     time.sleep(60)
 
 def store_outputs(targets, outdir):
-    for targ, _ in targets:
+    normalized = [t if len(t) == 3 else (t[0], t[1], None) for t in targets]        
+    for targ, _, _ in normalized:
         cmd = "docker cp %s:/home/test/output %s/%s" % (targ, outdir, targ)
+        print(cmd)
         run_cmd(cmd)
 
 def cleanup_containers(targets):
-    for targ, _ in targets:
+    normalized = [t if len(t) == 3 else (t[0], t[1], None) for t in targets]            
+    for targ, _, _ in normalized:
         cmd = "docker kill %s" % targ
         run_cmd(cmd)
 
@@ -150,6 +155,7 @@ def main():
         work_targets = fetch_works(targets)
         spawn_containers(work_targets)
         run_fuzzing(benchmark, work_targets, tool, timelimit, opt)
+        # if tool != "confuzius":
         measure_coverage(benchmark, work_targets, tool)
         store_outputs(work_targets, outdir)
         cleanup_containers(work_targets)

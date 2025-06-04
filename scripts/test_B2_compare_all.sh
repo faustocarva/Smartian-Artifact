@@ -5,7 +5,7 @@ OUTDIR=$(realpath $SCRIPTDIR/../output)
 ROOT=$(realpath $SCRIPTDIR/..)
 BENCHDIR=$(realpath $SCRIPTDIR/../benchmarks)
 B2_DIR="$BENCHDIR/B2"
-TEST_DIR="$BENCHDIR/B2_test"
+TEST_DIR="$BENCHDIR/b2_code"
 
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <iterN>"
@@ -46,7 +46,7 @@ for test_dir in $TEST_DIRS; do
     
     # Run experiment for the specified number of iterations
     for i in $(seq $1); do
-        python $SCRIPTDIR/run_experiment.py B2 smartian 3600 "--uselllmseeds --nosdfa --noddfa --withbuggain"
+        python $SCRIPTDIR/run_experiment.py B2 smartian 60 "--uselllmseeds --nosdfa --noddfa --withbuggain"
     done
     # Check if output directories exist
     if ls $OUTDIR/B2-smartian-* 1> /dev/null 2>&1; then

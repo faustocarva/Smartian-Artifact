@@ -84,6 +84,15 @@ function postprocess_mythril() {
     deactivate
 }
 
+function postprocess_confuzius() {
+    kill -9 run_confuzius.sh    
+    touch $OUTDIR/log.txt
+    touch $OUTDIR/cov.txt
+
+    /home/test/tools/confuzzius/ConFuzzius/parse.sh $OUTDIR/log.json > $OUTDIR/log.txt
+    /home/test/tools/confuzzius/ConFuzzius/cov.sh $OUTDIR/log.json > $OUTDIR/cov.txt
+}
+
 function postprocess_manticore() {
     kill -9 run_manticore.sh
 
@@ -110,11 +119,16 @@ function postprocess() {
         sFuzz) postprocess_sFuzz $4;;
         mythril) postprocess_mythril $4 $2;;
         manticore) postprocess_manticore;;
+        confuzius) postprocess_confuzius;;        
     esac
 }
 
 postprocess $1 $2 $3 $4
-$REPLAYER replay -p $2 -i $OUTDIR/testcase -t $5 > $OUTDIR/cov.txt 2>&1
+
+if [ "$1" != "confuzius" ]; then
+    $REPLAYER replay -p $2 -i $OUTDIR/testcase -t $5 > $OUTDIR/cov.txt 2>&1
+fi
+
 if [ $1 = smartian ]; then
     $REPLAYER replay -p $2 -i $OUTDIR/testcase > $OUTDIR/with_dfeed.txt 2>&1
     $REPLAYER replay -p $2 -i $OUTDIR/testcase --noddfa > $OUTDIR/without_dfeed.txt 2>&1
